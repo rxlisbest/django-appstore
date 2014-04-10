@@ -9,6 +9,5 @@ class appClass(models.Model):
 	
 class apps(models.Model):
 	c = models.ForeignKey(appClass)
-	a_title = models.CharField(max_length=100)
-	a_url = models.CharField(max_length=255)
+	a_app = models.FileField(upload_to="apps")
 	a_sort = models.IntegerField(default=0)

@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html lang="en">
+<head> 
+	<meta charset="utf-8" />
+	<title>应用分类</title> 
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" media="all" href="/templates/appstore/css/metro.css" />
+	<script src="/templates/appstore/js/jquery.min.js"></script>
+	<script src="/templates/appstore/js/jquery.plugins.min.js"></script>
+	<script src="/templates/appstore/js/metro.js"></script>
+	<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+	<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head> 
+<body>
+	<div class="metro-layout horizontal">
+		<div class="header">
+			<h1>应用商店-APPSTORE</h1>
+			<div class="controls">
+				<span class="down" title="Scroll down"></span>
+				<span class="up" title="Scroll up"></span>
+				<span class="next" title="Scroll left"></span>
+				<span class="prev" title="Scroll right"></span>
+				<span class="toggle-view" title="Toggle layout"></span>
+			</div>
+		</div>
+		<div class="content clearfix">
+			<div class="items">
+				<a class="box" href="#">
+					<span>Mail</span>
+					<img class="icon" src="/templates/appstore/images/mail.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #6b6b6b;">
+					<span>Settings</span>
+					<img class="icon" src="/templates/appstore/images/settings.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #43b51f;">
+					<span>Make a call</span>
+					<img class="icon" src="/templates/appstore/images/phone.png" alt="" />
+				</a>
+				<a class="box width2 height2" href="#">
+					<span>Photos</span>
+					<img class="cover" src="/templates/appstore/images/gallery.jpg" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #43b51f;">
+					<span>Make a call</span>
+					<img class="icon" src="/templates/appstore/images/phone.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #00aeef;">
+					<span>Music</span>
+					<img class="icon" src="/templates/appstore/images/music.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #f58d00;">
+					<span>Firefox</span>
+					<img class="icon" src="/templates/appstore/images/firefox.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #640f6c;">
+					<span>Yahoo</span>
+					<img class="icon" src="/templates/appstore/images/yahoo.png" alt="" />
+				</a>
+				<a class="box height2" href="#" style="background: #d32c2c;">
+					<span>GMail</span>
+					<img class="icon big" src="/templates/appstore/images/gmail.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #3c5b9b;">
+					<span>Facebook</span>
+					<img class="icon" src="/templates/appstore/images/facebook.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #ffc808;">
+					<span>Winamp</span>
+					<img class="icon" src="/templates/appstore/images/winamp.png" alt="" />
+				</a>
+				<a class="box" href="#" style="background: #00a9ec;">
+					<span>Tasks</span>
+					<img class="icon" src="/templates/appstore/images/tasks.png" alt="" />
+				</a>
+				<a class="box height2" href="#" style="background: #4c5e51;">
+					<span>DeviantART</span>
+					<img class="icon big" src="/templates/appstore/images/deviantart.png" alt="" />
+				</a>
+	{% for appclass in appclasses %}
+				<a class="box" href="#" style="background: #f874a4;">
+					<span>{{ appclass.c_title }}</span>
+					<img class="icon" src="/templates/appstore/images/dribbble.png" alt="" />
+				</a>
+	{% endfor %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

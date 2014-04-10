@@ -79,5 +79,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
+STATIC_ROOT = '/var/www/python/appstore/static/'
 STATIC_URL = '/static/'
+MEDIA_ROOT='/var/www/python/appstore/media'
+MEDIA_URL='/media/'
+
+TEMPLATE_DIRS = [os.path.join(BASE_DIR,'templates/appstore')]
