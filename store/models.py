@@ -7,9 +7,21 @@ def get_icon_path(instance, filename):
 	fname, ext = os.path.splitext(filename)	
 	return 'icon/%s%s'%(datetime.datetime.now().strftime('%Y%m%d%H%m%s'), ext.lower())
 
+class size(models.Model):
+	s_title = models.CharField(verbose_name="名称", max_length=50)
+	s_define = models.CharField(verbose_name="图标大小", max_length=50)
+	s_icon = models.CharField(verbose_name="图标位置", max_length=50)
+	class Meta:
+		verbose_name = "图标大小定义"
+		verbose_name_plural = "图标大小定义"
+	def __unicode__(self):
+		return self.s_title
+
 class appspic(models.Model):
+	s = models.ForeignKey(size, verbose_name="图标大小")
 	p_title = models.CharField(verbose_name="图标名称", max_length=50)
 	p_pic = models.FileField(verbose_name="图标图片", upload_to=get_icon_path)
+	p_color = models.CharField(verbose_name="图标颜色", max_length=50)
 	class Meta:
 		verbose_name = "图标"
 		verbose_name_plural = "图标列表"

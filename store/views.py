@@ -1,24 +1,34 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.conf import settings
+from store.models import appspic
 from store.models import appClass
+from store.models import apps
+from store.models import size 
+from django.db import connection 
+
+def dictfetchall(cursor):
+	desc = cursor.description
+	return [dict(zip([col[0] for col in desc], row)) for row in cursor.fetchall()]
 
 def index(request):
 	return HttpResponse("Hello,world.")
 
 def appclass(request):
 	acp = dict()
-	acp[1] = "/templates/appstore/images/mail.png"
-	acp[2] = "/templates/appstore/images/settings.png"
-	acp[3] = "/templates/appstore/images/phone.png"
-	acp[4] = "/templates/appstore/images/gallery.png"
-	acp[5] = "/templates/appstore/images/music.png"
-	acp[6] = "/templates/appstore/images/firefox.png"
-	acp[7] = "/templates/appstore/images/yahoo.png"
-	acp[8] = "/templates/appstore/images/gmail.png"
-	acp[9] = "/templates/appstore/images/facebook.png"
-	acp[10] = "/templates/appstore/images/winamp.png"
-	acp[11] = "/templates/appstore/images/tasks.png"
-	acp[12] = "/templates/appstore/images/deviantart.png"
-	acp[13] = "/templates/appstore/images/dribbble.png"
-	appclasses = appClass.objects.order_by('id')[:5]
-	return render(request, 'index.html', {'appclasses':appclasses,'acp':acp})
+	
+	cursor = connection.cursor()
+	sql = "SELECT *,store_appclass.id as c_id FROM store_appclass LEFT JOIN store_appspic ON store_appspic.id=store_appclass.p_id LEFT JOIN store_size ON store_size.id=store_appspic.s_id"
+	cursor.execute(sql)
+	classes = dictfetchall(cursor)
+	return render(request, 'index.html', {'classes':classes})
+
+def app(request, c_id):
+	acp = dict()
+	
+	cursor = connection.cursor()
+	sql = "SELECT * FROM store_apps LEFT JOIN store_appspic ON store_appspic.id=store_apps.p_id LEFT JOIN store_size ON store_size.id=store_appspic.s_id WHERE c_id = %s" % c_id
+	cursor.execute(sql)
+	apps = dictfetchall(cursor)
+	return render(request, 'app.html', {'apps':apps})
+

@@ -76,7 +76,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-FILE_CHARSET = 'gb18030'
 DEFAULT_CHARSET = 'utf-8'
 
 # Static files (CSS, JavaScript, Images)
